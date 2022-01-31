@@ -5,7 +5,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(users_param)
-    if @user.save
+    if @user.save 
+      @profile=Profile.new(user_id:@user.id)
+      @profile.save
       flash[:success] = "You are signed up! Please login."
       redirect_to login_path
     else

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_01_220903) do
+ActiveRecord::Schema.define(version: 2022_01_31_184530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 2021_11_01_220903) do
     t.index ["profile_id"], name: "index_educations_on_profile_id"
   end
 
+  create_table "experiences", force: :cascade do |t|
+    t.string "company"
+    t.string "position"
+    t.date "start_date"
+    t.date "end_date"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "name"
     t.string "job_title"
@@ -39,6 +49,15 @@ ActiveRecord::Schema.define(version: 2021_11_01_220903) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.text "description"
+    t.string "title"
+    t.string "project_url"
+    t.string "tech_stack"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

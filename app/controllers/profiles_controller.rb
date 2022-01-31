@@ -10,10 +10,10 @@ class ProfilesController < ApplicationController
         @profile = Profile.find(params[:id])
         if @profile.update(updated_profile_params)
             flash[:success] = "Profile updated successfully."
-            redirect_to edit_url
+            redirect_to root_url
         else
             flash[:danger] = "Profile update failed."
-            redirect_to root_url
+            redirect_to edit_url
         end
     end
 

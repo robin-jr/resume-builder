@@ -12,8 +12,16 @@
         <p class="font-bold">
             Error
         </p>
+        <% if message.kind_of?(Array) %>
+            <% message.each do |msg| %>
+                <p>
+                    <%= msg %>
+                </p>
+            <% end %>
+        <% else %>
         <p>
             <%= message %>
         </p>
+        <% end %>
     </div>
 <% end %>

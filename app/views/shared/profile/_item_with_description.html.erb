@@ -1,13 +1,9 @@
 <div class="flex justify-between flex-col lg:items-center lg:flex-row">
     <h3 class="text-2xl font-bold"><%= title %></h3>
-    <% if defined? start_date %>
-        <p class="text-gray-400 italic text-sm">
-            <%= get_date_in_month_year_format(start_date) %> - <%= get_date_in_month_year_format(end_date) %>
-        </p>
-    <% end %>
+    <p class="text-gray-400 italic text-sm">
+        <%= get_date_in_month_year_format(start_date) %> - <%= get_date_in_month_year_format(end_date) %>
+    </p>
 </div>
 <h4 class="text-lg font-bold"><%= subtitle %></h4>
-<% if defined? link %>
-    <h4 class="text-sm"><%= link %></h4>
-<% end %>
+
 <p class="mt-1 text-justify"><%= description %></p>

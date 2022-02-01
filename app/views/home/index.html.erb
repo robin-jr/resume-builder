@@ -6,8 +6,29 @@
             Welcome, <span class="text-purple-600 font-semibold"><%= @user.name %><span>
         </h1>
         <%= render "shared/input/buttons/secondary", color: "green", label: "Preview", href: @user.profile %>
+        
+        <button class="border-2 px-3" onclick="copyLink()">Copy link</button>
+        <span id="profile-link" hidden><%= root_url+"profiles/" + @user.profile.id.to_s %></span>
+        
         <%= render "shared/input/buttons/secondary", color: "purple", label: "Edit", href: edit_url %>
     </div>
     
     <%= render "shared/profile/preview", profile: @user.profile %>
 </main>
+<script>
+    function copyLink() {
+        var link = document.getElementById("profile-link").innerHTML;
+        console.log(link);
+        copyToClipboard(link);
+        window.alert("Share link Copied to clipboard");
+    }
+    function copyToClipboard(text) {
+        var input = document.createElement('textarea');
+        input.innerHTML = text;
+        document.body.appendChild(input);
+        input.select();
+        var result = document.execCommand('copy');
+        document.body.removeChild(input);
+        return result;
+    }
+</script>

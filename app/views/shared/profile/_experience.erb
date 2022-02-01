@@ -6,7 +6,9 @@
         end_date: experience.end_date,
         description: experience.description
     %>
-    <%= render "shared/profile/project_section_card", title: "Projects" do %>
-        <%= render partial: "shared/profile/project", collection: experience.projects %>
-    <% end %>
+    <%if experience.projects.length >0 %>
+        <%= render "shared/profile/project_section_card", title: "Projects" do %>
+            <%= render partial: "shared/profile/project", collection: experience.projects %>
+        <% end %>
+    <%end%>
 </div>

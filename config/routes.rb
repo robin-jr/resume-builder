@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
 
-  resources :profiles , only: [:update]
+  resources :profiles , only: [:update,:show]
   resources :educations , only: [:new]
   resources :experiences , only: [:new]
   resources :projects , only: [:new]

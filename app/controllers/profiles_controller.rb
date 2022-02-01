@@ -5,6 +5,16 @@ class ProfilesController < ApplicationController
   before_action :logged_in_user, only: [:update]
   before_action :correct_user, only: [:update]
 
+  def show
+    begin
+      @profile = Profile.find(params[:id])
+    rescue
+      flash[:danger]="Sorry! That profile is not available"
+      redirect_to root_path
+    end
+  end
+  
+
   def update
     begin
       updated_profile_params = update_array_attributes_in_params(profile_params)
